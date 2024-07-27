@@ -3,11 +3,11 @@ import 'package:dartz/dartz.dart';
 import 'package:spotify/data/models/song/song.dart';
 import 'package:spotify/domain/entities/song/song.dart';
 
-abstract class SongFirebaseService{
-  Future<Either> getSongsNews() ;
-}
-class SongFirebaseServiceImpl extends SongFirebaseService{
-  @override
+  abstract class SongFirebaseService{
+   Future<Either> getSongsNews() ;
+   }
+  class SongFirebaseServiceImpl extends SongFirebaseService{
+    @override
   Future<Either> getSongsNews() async {
    try{
     List<SongEntity> songs = [];
