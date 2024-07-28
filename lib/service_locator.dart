@@ -6,6 +6,7 @@ import 'package:spotify/domain/repository/auth/auth.dart';
 import 'package:spotify/domain/usecases/auth/signin.dart';
 import 'package:spotify/domain/usecases/auth/signup.dart';
 import 'package:spotify/domain/usecases/song/get_news_songs.dart';
+import 'package:spotify/domain/usecases/song/get_play_list.dart';
 
 import 'data/sources/song/song_firebase_service.dart';
 import 'domain/repository/song/song.dart';
@@ -36,5 +37,8 @@ final sl=GetIt.instance;
    );
    sl.registerSingleton<GetNewsSongsUseCase>(
        GetNewsSongsUseCase()
+   );
+   sl.registerSingleton<GetPlayListUseCase>(
+       GetPlayListUseCase()
    );
  }
