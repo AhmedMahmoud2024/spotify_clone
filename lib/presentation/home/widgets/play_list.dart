@@ -74,8 +74,10 @@ class PlayList extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context)
-                      => SongPlayerPage()
+                      builder: (BuildContext context) =>  SongPlayerPage(
+                        songEntity: songs[index],
+
+                      )
                   )
               );
             },
@@ -125,7 +127,13 @@ class PlayList extends StatelessWidget {
                         songs[index].duration.toString().replaceAll('.', ':')
                     ),
                     const SizedBox(width: 20,),
-
+                   IconButton(
+                       onPressed: (){},
+                       icon: Icon(
+                         Icons.favorite_rounded,
+                         color: AppColors.darkGrey,
+                       ),
+                   )
                   ],
                 )
               ],
