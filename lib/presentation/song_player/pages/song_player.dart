@@ -1,9 +1,8 @@
 
-import 'dart:js';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spotify/common/widgets/favorite_button/favorite_button.dart';
 import 'package:spotify/domain/entities/song/song.dart';
 import 'package:spotify/presentation/song_player/bloc/song_player_cubit.dart';
 import 'package:spotify/presentation/song_player/bloc/song_player_state.dart';
@@ -40,7 +39,7 @@ class SongPlayerPage extends StatelessWidget{
          '${AppURLs.songFirestorage}${songEntity.artist} - ${songEntity.title}.mp3?${AppURLs.mediaAlt}'
      ),
      child: SingleChildScrollView(
-       padding: EdgeInsets.symmetric(
+       padding: const EdgeInsets.symmetric(
          horizontal: 16,
          vertical: 16
        ),
@@ -98,13 +97,8 @@ class SongPlayerPage extends StatelessWidget{
             ),
           ],
         ),
-        IconButton(
-          onPressed: (){},
-          icon: Icon(
-            Icons.favorite_outline_outlined,
-            size: 35,
-            color: AppColors.darkGrey,
-          ),
+        FavoriteButton(
+            songEntity: songEntity
         )
       ],
     );
@@ -149,7 +143,7 @@ class SongPlayerPage extends StatelessWidget{
               child: Container(
                 height: 60,
                 width: 60,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.primary
                 ),

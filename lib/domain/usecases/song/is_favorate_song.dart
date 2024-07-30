@@ -9,6 +9,6 @@ class IsFavorateSongUseCase implements UseCase<bool,String> {
 
   @override
   Future<bool> call({ String ? params}) async{
-    return await sl<SongsRepository>().isFavorateSong(params!);
+    return await sl<SongsRepository>().isFavoriteSong(params!);
   }
 }
