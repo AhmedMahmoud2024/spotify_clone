@@ -5,14 +5,18 @@ import 'package:spotify/common/widgets/appbar/app_bar.dart';
 import 'package:spotify/presentation/profile/bloc/favorite_songs_cubit.dart';
 import 'package:spotify/presentation/profile/bloc/favorite_songs_state.dart';
 import 'package:spotify/presentation/profile/bloc/profile_info_cubit.dart';
+import 'package:spotify/presentation/profile/widgets/profile_info/profile_info.dart';
 import 'package:spotify/presentation/song_player/pages/song_player.dart';
 
 import '../../../common/widgets/favorite_button/favorite_button.dart';
 import '../../../core/configs/constants/app_urls.dart';
+import '../../../domain/entities/auth/user.dart';
 import '../bloc/profile_info_state.dart';
 
+
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+
+   const ProfilePage({super.key, });
 
   @override
   Widget build(BuildContext context) {
@@ -34,70 +38,75 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _profileInfo(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ProfileInfoCubit()..getUser(),
-      child: Container(
-        height: MediaQuery.of(context).size.height / 3.5 ,
-        width: double.infinity,
-        decoration: BoxDecoration(
-            color: context.isDarkMode ? const Color(0xff2C2B2B) : Colors.white,
-            borderRadius: const BorderRadius.only(
-                bottomRight: Radius.circular(50),
-                bottomLeft: Radius.circular(50)
-            )
-        ),
-        child: BlocBuilder<ProfileInfoCubit,ProfileInfoState>(
-          builder: (context, state) {
-            if(state is ProfileInfoLoading) {
-              return Container(
-                  alignment: Alignment.center,
-                  child: const CircularProgressIndicator()
-              );
-            }
-            if(state is ProfileInfoLoaded) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 90,
-                    width: 90,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            image: NetworkImage(
-                                state.userEntity.imageUrl!
-                            )
-                        )
-                    ),
-                  ),
-                  const SizedBox(height: 15,),
-                  Text(
-                      state.userEntity.email!
-                  ),
-                  const SizedBox(height: 10,),
-                  Text(
-                    state.userEntity.fullName!,
-                    style: const TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold
-                    ),
-                  )
-                ],
-              );
-            }
+   Widget _profileInfo(BuildContext context) {
+     return BlocProvider(
+       create: (context) =>
+       ProfileInfoCubit()
+         ..getUser(),
+       child: Container(
+         height: MediaQuery
+             .of(context)
+             .size
+             .height / 3.5,
+         width: double.infinity,
+         decoration: BoxDecoration(
+             color: context.isDarkMode ? const Color(0xff2C2B2B) : Colors.white,
+             borderRadius: const BorderRadius.only(
+                 bottomRight: Radius.circular(50),
+                 bottomLeft: Radius.circular(50)
+             )
+         ),
+         child: BlocBuilder<ProfileInfoCubit, ProfileInfoState>(
+           builder: (context, state) {
+             if (state is ProfileInfoLoading) {
+               return Container(
+                   alignment: Alignment.center,
+                   child: const CircularProgressIndicator()
+               );
+             }
+             if (state is ProfileInfoLoaded) {
+               return Column(
+                 mainAxisAlignment: MainAxisAlignment.center,
+                 children: [
+                   Container(
+                     height: 90,
+                     width: 90,
+                     decoration: BoxDecoration(
+                         shape: BoxShape.circle,
+                         image: DecorationImage(
+                             image: NetworkImage(
+                                 state.userEntity.imageUrl!
+                             )
+                         )
+                     ),
+                   ),
+                   const SizedBox(height: 15,),
+                   Text(
+                       state.userEntity.email!
+                   ),
+                   const SizedBox(height: 10,),
+                   Text(
+                     state.userEntity.fullName!,
+                     style: const TextStyle(
+                         fontSize: 22,
+                         fontWeight: FontWeight.bold
+                     ),
+                   )
+                 ],
+               );
+             }
 
-            if(state is ProfileInfoFailure) {
-              return const Text(
-                  'Please try again'
-              );
-            }
-            return Container();
-          },
-        ),
-      ),
-    );
-  }
+             if (state is ProfileInfoFailure) {
+               return const Text(
+                   'Please try again'
+               );
+             }
+             return Container();
+           },
+         ),
+       ),
+     );
+   }
 
   Widget _favoriteSongs() {
     return BlocProvider(

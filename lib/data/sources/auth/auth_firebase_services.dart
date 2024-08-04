@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:spotify/data/models/auth/create_user_req.dart';
 import 'package:spotify/data/models/auth/signin_user_req.dart';
 import 'package:spotify/data/models/auth/user.dart';
-
 import '../../../core/configs/constants/app_urls.dart';
 import '../../../domain/entities/auth/user.dart';
 
@@ -15,11 +14,11 @@ abstract class AuthFirebaseService{
 }
 class AuthFirebaseServiceImpl extends AuthFirebaseService{
   @override
-  Future<Either> signin(SigninUserReq SigninUserReq) async{
+  Future<Either> signin(SigninUserReq signinUserReq) async{
     try{
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: SigninUserReq.email,
-          password: SigninUserReq.password
+          email: signinUserReq.email,
+          password: signinUserReq.password
       );
       return const Right("Signin Was Successful");
     } on FirebaseAuthException catch(e){

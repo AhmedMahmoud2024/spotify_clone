@@ -1,5 +1,4 @@
 import '../../../domain/entities/auth/user.dart';
-
 class UserModel{
   String ? fullName ;
   String ? email ;
@@ -13,7 +12,7 @@ class UserModel{
       );
   UserModel.fromJson(Map<String,dynamic> data){
     fullName =data['name'] ;
-    email =data['artist'];
+    email =data['email'];
   }
 }
 extension UserModelX on UserModel{

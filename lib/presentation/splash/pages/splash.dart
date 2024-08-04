@@ -24,7 +24,7 @@ class _SplashPageState extends State<SplashPage> {
       child: Align(
       alignment: Alignment.center,
         child: SvgPicture.asset(
-   AppVectors.logo
+      AppVectors.logo
         ),
       ),
     ),

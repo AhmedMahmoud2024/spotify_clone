@@ -158,14 +158,3 @@ class ChooseModePage extends StatelessWidget {
     );
   }
 }
-// import 'package:flutter/cupertino.dart';
-//
-// class ChooseModePage extends StatelessWidget{
-//   const ChooseModePage({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container();
-//   }
-//
-// }

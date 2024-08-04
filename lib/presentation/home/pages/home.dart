@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               height: 260,
               child: TabBarView(
                   children:[
-                    NewsSongs(),
+                    const NewsSongs(),
                     Container(),
                     Container(),
                     Container(),
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   right: 60
                 ),
                 child: Image.asset(
-                  AppImages.homeArtist
+                  AppImages.homeArtist,
                 ),
               ),
             )
@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         isScrollable: true,
         indicatorColor: AppColors.primary,
         labelColor: context.isDarkMode ?Colors.white :Colors.black,
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           vertical: 40,
           horizontal: 16
         ),

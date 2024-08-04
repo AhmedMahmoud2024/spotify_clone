@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -93,7 +92,7 @@ class SignupOrSigninPage extends StatelessWidget{
                        title: 'Register',
                      ),
                  ),
-                 SizedBox(width: 20,),
+                 const SizedBox(width: 20,),
                  Expanded(
                    flex: 1,
                    child: TextButton(

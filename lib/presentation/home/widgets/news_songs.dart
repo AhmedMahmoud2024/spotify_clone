@@ -16,7 +16,7 @@ class NewsSongs extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
  return BlocProvider(
-     create: (_) =>NewsSongsCubit()..getNewsSongs(),
+     create: (_) => NewsSongsCubit()..getNewsSongs(),
    child: SizedBox(
      height: 200,
      child:BlocBuilder<NewsSongsCubit,NewsSongsState>(
@@ -24,7 +24,7 @@ class NewsSongs extends StatelessWidget{
          if(state is NewsSongsLoading){
            return Container(
              alignment: Alignment.center,
-               child: CircularProgressIndicator()
+               child: const CircularProgressIndicator()
            );
          }
          if(state is NewsSongsLoaded){
@@ -39,6 +39,7 @@ class NewsSongs extends StatelessWidget{
    ),
  );
   }
+
  Widget _songs(List<SongEntity> songs){
     return  ListView.separated(
       scrollDirection: Axis.horizontal,
@@ -66,7 +67,7 @@ class NewsSongs extends StatelessWidget{
                         image: DecorationImage(
                           fit: BoxFit.cover,
                           image:NetworkImage(
-                          '${AppURLs.coverFirestorage}${songs[index].artist} - ${songs[index].title}.jpg?${AppURLs.mediaAlt}'
+                          '${AppURLs.coverFirestorage}${songs[index].artist} - ${songs[index].title}.jpg?${AppURLs.mediaAlt}',
                           )
                         ),
                       ),
@@ -91,15 +92,15 @@ class NewsSongs extends StatelessWidget{
                   const SizedBox(height: 10,),
                   Text(
                       songs[index].title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 16
                     ),
                   ),
                   const SizedBox(height: 5,),
                   Text(
-                    songs[index].title,
-                    style: TextStyle(
+                    songs[index].artist,
+                    style: const TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 12
                     ),
@@ -109,7 +110,7 @@ class NewsSongs extends StatelessWidget{
             ),
           );
         },
-        separatorBuilder:  (context,index) => SizedBox(width: 14,) ,
+        separatorBuilder:  (context,index) => const SizedBox(width: 14,) ,
         itemCount: songs.length
     );
  }
